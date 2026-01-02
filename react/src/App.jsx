@@ -68,12 +68,30 @@ export default function App() {
       <h1>Product Management</h1>
 
       <div className="toolbar">
-        <SearchBar value={search} onChange={setSearch} />
+        {/* Left: Search */}
+        <div className="toolbar-left">
+          <SearchBar value={search} onChange={setSearch} />
+        </div>
 
-        <div>
-          <button onClick={() => setView("list")}>List View</button>
-          <button onClick={() => setView("grid")}>Card View</button>
-          <button onClick={() => setEditingProduct({})}>Add Product</button>
+        {/* Right: View / Action buttons */}
+        <div className="toolbar-right">
+          <div className="btn-group">
+            <button
+              className={view === "list" ? "active" : ""}
+              onClick={() => setView("list")}
+            >
+              List View
+            </button>
+            <button
+              className={view === "grid" ? "active" : ""}
+              onClick={() => setView("grid")}
+            >
+              Card View
+            </button>
+            <button onClick={() => setEditingProduct({})}>
+              Add Product
+            </button>
+          </div>
         </div>
       </div>
 
@@ -104,5 +122,6 @@ export default function App() {
         onPageChange={setCurrentPage}
       />
     </div>
-  )
+  );
+
 }
